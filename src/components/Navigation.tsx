@@ -291,7 +291,7 @@ export function Navigation() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <span className="text-sm text-muted-foreground">{t('nav.settings') || 'Settings'}:</span>
+                  <span className="text-sm text-muted-foreground">{t('nav.settings')}:</span>
                   <LanguageToggle />
                   <ThemeToggle />
                   <SystemToggle />

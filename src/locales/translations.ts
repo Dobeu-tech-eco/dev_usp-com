@@ -11,6 +11,7 @@ export interface Translations {
     employers: string
     privacy: string
     terms: string
+    settings: string
   }
   common: {
     whatsappCta: string
@@ -479,6 +480,7 @@ export const translations: Record<Language, Translations> = {
       employers: 'Clients',
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
+      settings: 'Theme Selection',
     },
     common: {
       whatsappCta: 'Questions? Message us on WhatsApp - {number}',
@@ -945,6 +947,7 @@ export const translations: Record<Language, Translations> = {
       employers: 'Clientes',
       privacy: 'Política de Privacidad',
       terms: 'Términos de Servicio',
+      settings: 'Selección de Tema',
     },
     common: {
       whatsappCta: '¿Preguntas? Envíenos un mensaje por WhatsApp - {number}',
@@ -1411,6 +1414,7 @@ export const translations: Record<Language, Translations> = {
       employers: 'Clients',
       privacy: 'Politique de Confidentialité',
       terms: 'Conditions d\'Utilisation',
+      settings: 'Sélection du Thème',
     },
     common: {
       whatsappCta: 'Des questions ? Écrivez-nous sur WhatsApp - {number}',
