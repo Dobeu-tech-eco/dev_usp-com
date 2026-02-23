@@ -6,6 +6,7 @@ import { ThemeToggle, SystemToggle } from "@/components/ThemeToggle"
 import { LanguageToggle } from "@/components/LanguageToggle"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { useLocation, useNavigate } from "react-router-dom"
+import { useTheme } from "next-themes"
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -13,6 +14,8 @@ export function Navigation() {
   const { t } = useLanguage()
   const location = useLocation()
   const navigate = useNavigate()
+  const { resolvedTheme } = useTheme()
+  const logoSrc = resolvedTheme === "dark" ? "/logo-dark.png" : "/logo-light.png"
   
   // Scroll-based effects reserved for future enhancement
   // const { scrollY } = useScroll()
@@ -125,7 +128,7 @@ export function Navigation() {
                 data-testid="nav-logo"
               >
                 <motion.img
-                  src="/logo.svg"
+                  src={logoSrc}
                   alt="Unique Staffing Professionals Logo"
                   className="h-12 lg:h-16 w-auto"
                   whileHover={{ scale: 1.05 }}
