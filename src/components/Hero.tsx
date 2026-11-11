@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import { useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkle, Users, Building, Trophy } from "@phosphor-icons/react"
 import { useLanguage } from "@/contexts/LanguageContext"
@@ -6,6 +7,7 @@ import { motion, useScroll, useTransform, useInView, Variants } from "framer-mot
 
 export function Hero() {
   const { t } = useLanguage()
+  const navigate = useNavigate()
   const heroRef = useRef<HTMLElement>(null)
   const isInView = useInView(heroRef, { once: true })
   
@@ -183,7 +185,7 @@ export function Hero() {
                 size="lg"
                 variant="outline"
                 className="text-base px-8 py-6 h-auto bg-background/50 backdrop-blur-sm hover:bg-secondary/80 border-border/50 transition-all duration-300"
-                onClick={() => scrollToSection("contact")}
+                onClick={() => navigate("/employers")}
               >
                 {t('hero.ctaEmployers')}
               </Button>

@@ -7,7 +7,6 @@ import { BusinessAddress, BusinessPhone, BusinessEmail } from "@/components/seo/
 import { useLanguage } from "@/contexts/LanguageContext"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { EFAX_NUMBER, WHATSAPP_LINK, WHATSAPP_NUMBER } from "@/lib/contact-info"
-
 export function Footer() {
   const { businessInfo } = useBusinessInfo()
   const { t } = useLanguage()
@@ -114,9 +113,9 @@ export function Footer() {
               <div className="relative bg-white/10 rounded-2xl p-5 overflow-hidden isolate">
                 <div className="flex items-center gap-3 mb-4">
                   <motion.img
-                    src="/logo.svg"
+                    src="/logo-dark.png"
                     alt="Unique Staffing Professionals Logo"
-                    className="h-14 w-auto bg-white rounded-lg p-1.5 shadow-lg"
+                    className="h-14 w-auto rounded-lg p-1.5"
                     whileHover={{ scale: 1.05, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 300, damping: 15 }}
                   />
