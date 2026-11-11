@@ -9,7 +9,8 @@
         "build": "tsc -b --noCheck && vite build",
         "lint": "eslint .",
         "optimize": "vite optimize",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "test": "tsc --module NodeNext --moduleResolution NodeNext --target ES2020 --outDir node_modules/.test-dist --noEmit false src/lib/jobFiltering.ts && node --test test/jobFiltering.test.mjs"
     },
     "dependencies": {
         "@datadog/browser-logs": "^6.32.0",
@@ -61,6 +62,7 @@
         "input-otp": "^1.4.2",
         "lucide-react": "^0.484.0",
         "marked": "^15.0.7",
+        "netlify-cli": "^23.15.1",
         "next-themes": "^0.4.6",
         "octokit": "^4.1.2",
         "react": "^19.0.0",
