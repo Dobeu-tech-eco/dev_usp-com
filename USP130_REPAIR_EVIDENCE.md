@@ -14,4 +14,8 @@ Verification: npm ci --legacy-peer-deps initially failed on a pre-existing incom
 
 Read-only GitHub check inspection: application build passes. Datadog API rejects pipeline tagging with Forbidden; credential/site/account authorization needs owner investigation, and no secret validity is established. Claude initializes then returns is_error:true after one turn, zero model usage and zero cost; public output hides the cause. Owner must inspect protected execution diagnostics and service configuration. No secrets, permissions, billing, thresholds, or workflows changed.
 
-Detailed local logs and audit JSON: /tmp/usp130-evidence (temporary, outside Git). No push, merge, deployment, external messages, or production action performed. Owner should review local diff, resolve pre-existing vulnerabilities separately, and authorize normal PR CI reruns after publication.
+Independent lockfile review: 1,189 package entries removed, none added. Retained package versions, integrity hashes, resolved URLs and dependency relationships are unchanged; only dev/devOptional classification changes remain.
+
+The tracked .netlify/plugins/package-lock.json remains a separate scanner source and is unchanged by this repair. The historical Trivy check annotates yaml@2.8.2 there with CVE-2026-33532 (medium; fixed in 2.8.3 or 1.10.3). This plugin lockfile differs between base and original PR, so its findings are separate from the root baseline comparison. No existing Trivy binary was found; no tooling was installed. Historical Trivy alerts do not establish repaired scan results. Browser and hosted verification of the repair remain outstanding.
+
+Publication scope: repair branch and draft PR against the original PR branch only; no merge or deployment authorized. Production workflow triggers only on main pushes or explicit dispatch; neither is part of this repair. Local logs are not included in the repository.
