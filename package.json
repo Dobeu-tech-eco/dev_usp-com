@@ -9,7 +9,8 @@
         "build": "tsc -b --noCheck && vite build",
         "lint": "eslint .",
         "optimize": "vite optimize",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "test": "tsc --module NodeNext --moduleResolution NodeNext --target ES2020 --outDir node_modules/.test-dist --noEmit false src/lib/jobFiltering.ts && node --test test/jobFiltering.test.mjs"
     },
     "dependencies": {
         "@datadog/browser-logs": "^6.32.0",

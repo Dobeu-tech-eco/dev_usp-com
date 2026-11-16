@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -8,16 +8,20 @@ import { supabase, Job } from "@/lib/supabase"
 import { isDemoMode, getDemoJobs } from "@/lib/mockData"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { motion } from "framer-motion"
-import { useRef } from "react"
+import { filterJobs } from "@/lib/jobFiltering"
 
 export function JobListings() {
   const { t } = useLanguage()
   const [jobs, setJobs] = useState<Job[]>([])
-  const [filteredJobs, setFilteredJobs] = useState<Job[]>([])
   const [searchTitle, setSearchTitle] = useState("")
   const [searchZip, setSearchZip] = useState("")
   const [loading, setLoading] = useState(true)
   const ref = useRef<HTMLDivElement>(null)
+
+  const filteredJobs = useMemo(
+    () => filterJobs(jobs, searchTitle, searchZip),
+    [jobs, searchTitle, searchZip]
+  )
 
   useEffect(() => {
     if (isDemoMode()) {
@@ -27,26 +31,6 @@ export function JobListings() {
     }
     fetchJobs()
   }, [])
-
-  // Filter jobs whenever jobs data or search filters change
-  useEffect(() => {
-    let filtered = jobs
-
-    if (searchTitle.trim()) {
-      filtered = filtered.filter(job =>
-        job.title.toLowerCase().includes(searchTitle.toLowerCase()) ||
-        job.category.toLowerCase().includes(searchTitle.toLowerCase())
-      )
-    }
-
-    if (searchZip.trim()) {
-      filtered = filtered.filter(job =>
-        job.location_zip.startsWith(searchZip.trim())
-      )
-    }
-
-    setFilteredJobs(filtered)
-  }, [jobs, searchTitle, searchZip])
 
   const fetchJobs = async () => {
     try {
@@ -59,7 +43,6 @@ export function JobListings() {
 
       if (error) throw error
       setJobs(data || [])
-      // Don't set filteredJobs here - the useEffect will handle filtering
     } catch (error) {
       console.error('Error fetching jobs:', error)
     } finally {
@@ -67,30 +50,8 @@ export function JobListings() {
     }
   }
 
-  const filterJobs = () => {
-    // This function is kept for the handleSearch form submission
-    // The actual filtering is handled by the useEffect above
-    let filtered = jobs
-
-    if (searchTitle.trim()) {
-      filtered = filtered.filter(job =>
-        job.title.toLowerCase().includes(searchTitle.toLowerCase()) ||
-        job.category.toLowerCase().includes(searchTitle.toLowerCase())
-      )
-    }
-
-    if (searchZip.trim()) {
-      filtered = filtered.filter(job =>
-        job.location_zip.startsWith(searchZip.trim())
-      )
-    }
-
-    setFilteredJobs(filtered)
-  }
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    filterJobs()
   }
 
   const scrollToApply = () => {

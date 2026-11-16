@@ -4,6 +4,7 @@
 Professional staffing agency website for Unique Staffing Professionals Inc. based in Riverdale, MD. Built with React, TypeScript, Vite, and Tailwind CSS v4. Originally a GitHub Spark project, adapted for Replit. Includes admin portal with applicant management, live chat, job postings management, and email notifications via Resend.
 
 ## Recent Changes
+- 2026-02-23: Replaced website logos with theme-aware versions: logo-light.png (transparent bg) for light theme, logo-dark.png (dark bg) for dark theme. Navigation swaps logo via useTheme(). Footer and VideoHero use dark variant. Generated favicon.png/ico. Updated index.html favicon, apple-touch-icon, and structured data references.
 - 2026-02-10: Added live chat system with ChatContext (localStorage persistence), LiveChatAdmin component in admin portal, and LiveChat.tsx integration with email alerts via Resend.
 - 2026-02-10: Added JobPostingsManager for admin portal CRUD operations on job listings with demo mode data.
 - 2026-02-10: Created Express backend server (port 3001) with Resend email integration for application, chat, and contact notifications to Omorilla@uniquestaffingprofessionals.com.

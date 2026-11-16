@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, SpeakerHigh, SpeakerSlash } from "@phosphor-icons/react"
-
 export function VideoHero() {
   const [showVideo, setShowVideo] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
@@ -88,9 +87,9 @@ export function VideoHero() {
           {/* Company logo watermark */}
           <div className="absolute top-6 left-6 z-10">
             <img
-              src="/logo.svg"
+              src="/logo-dark.png"
               alt="Unique Staffing Professionals"
-              className="h-10 w-auto bg-white/90 rounded-lg p-1.5"
+              className="h-10 w-auto rounded-lg p-1.5"
             />
           </div>
         </motion.div>
